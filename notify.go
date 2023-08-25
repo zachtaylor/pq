@@ -48,6 +48,11 @@ type NotificationHandlerConnector struct {
 	notificationHandler func(*Notification)
 }
 
+// Driver returns the underlying connector's Driver
+func (n *NotificationHandlerConnector) Driver() driver.Driver {
+	return n.Connector.Driver()
+}
+
 // Connect calls the underlying connector's connect method and then sets the
 // notification handler.
 func (n *NotificationHandlerConnector) Connect(ctx context.Context) (driver.Conn, error) {
